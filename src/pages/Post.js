@@ -12,11 +12,11 @@ function Post() {
   const { authState } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+    axios.get(`https://full-stack-follow-through.herokuapp.com/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
 
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    axios.get(`https://full-stack-follow-through.herokuapp.com/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, []);
@@ -24,7 +24,7 @@ function Post() {
   const addComment = () => {
     axios
       .post(
-        "http://localhost:3001/comments",
+        "https://full-stack-follow-through.herokuapp.com/comments",
         {
           commentBody: newComment,
           PostId: id,
@@ -51,7 +51,7 @@ function Post() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`http://localhost:3001/comments/${id}`, {
+      .delete(`https://full-stack-follow-through.herokuapp.com/comments/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
@@ -65,7 +65,7 @@ function Post() {
 
   const deletePost = (id) => {
     axios
-      .delete(`http://localhost:3001/posts/${id}`, {
+      .delete(`https://full-stack-follow-through.herokuapp.com/posts/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
@@ -77,7 +77,7 @@ function Post() {
     if (option === "title") {
       let newTitle = prompt("Enter the new title:");
       axios.put(
-        "http://localhost:3001/posts/title",
+        "https://full-stack-follow-through.herokuapp.com/posts/title",
         {
           newTitle: newTitle,
           id: id,
@@ -90,7 +90,7 @@ function Post() {
     } else {
       let newPostText = prompt("Enter a new body text:");
       axios.put(
-        "http://localhost:3001/posts/postText",
+        "https://full-stack-follow-through.herokuapp.com/posts/postText",
         {
           newText: newPostText,
           id: id,
