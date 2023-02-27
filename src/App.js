@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/", {
+      .get("https://full-stack-follow-through.herokuapp.com/auth/", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
@@ -76,9 +76,9 @@ function App() {
             </div>
           </div>
           <Routes>
-            <Route path="/" exact element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/createpost" element={<NewPost />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" exact element={<Login />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/post/:id" element={<Post />} />
             <Route path="/profile/:id" element={<Profile />} />
