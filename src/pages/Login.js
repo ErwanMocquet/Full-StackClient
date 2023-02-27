@@ -12,20 +12,23 @@ function Login() {
 
   const login = () => {
     const data = { username: username, password: password };
-    axios.post("https://full-stack-follow-through.herokuapp.com/auth/login", data).then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        localStorage.setItem("accessToken", response.data.token);
-        setAuthState({
-          username: response.data.username,
-          id: response.data.id,
-          status: true,
-        });
-        navigate("/");
-      }
-    });
+    axios
+      .post("https://full-stack-follow-through.herokuapp.com/auth/login", data)
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          localStorage.setItem("accessToken", response.data.token);
+          setAuthState({
+            username: response.data.username,
+            id: response.data.id,
+            status: true,
+          });
+          navigate("/");
+        }
+      });
   };
+  
   return (
     <div className="loginContainer">
       <input
@@ -42,7 +45,7 @@ function Login() {
           setPassword(event.target.value);
         }}
         onKeyDown={(event) => {
-          if (event.key === 'Enter') {
+          if (event.key === "Enter") {
             login();
           }
         }}

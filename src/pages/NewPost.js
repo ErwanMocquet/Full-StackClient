@@ -55,7 +55,7 @@ function NewPost() {
             name="postText"
             placeholder="Ex. your post content.."
           />
-          <button type="submit">Create Post</button>
+          <button onSubmit={onSubmit} type="submit">Create Post</button>
         </Form>
       </Formik>
     </div>
