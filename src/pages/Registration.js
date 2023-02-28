@@ -17,7 +17,7 @@ function Registration() {
       .min(3)
       .max(15)
       .required("You must enter an username"),
-    password: Yup.string().min(4).max(20).required(),
+    password: Yup.string().min(4).max(20).required("You must enter a password"),
   });
 
   const onSubmit = (data) => {
